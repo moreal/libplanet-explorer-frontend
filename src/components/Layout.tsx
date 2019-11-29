@@ -3,7 +3,7 @@ import { css, cx } from 'emotion';
 import styled from '@emotion/styled';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
-import { Icon, Label, SearchBox } from 'office-ui-fabric-react';
+import { Icon, Label, SearchBox, Link } from 'office-ui-fabric-react';
 import {
   TooltipHost,
   TooltipDelay,
@@ -57,7 +57,7 @@ export const NavBar: React.FC<NavBarProps> = ({ className }) => {
   return (
     <nav className={className}>
       <NavWrapper>
-        <LogoLink href="/">
+        <LogoLink href={'/' + process.env.NETWORK_NAME}>
           <LogoImg src={logo} />
         </LogoLink>
         <NavSearchBox placeholder="Block Hash / TxID" onSearch={onSearch} />
@@ -91,7 +91,7 @@ const NavWrapper = styled(Wrapper)`
   justify-content: flex-start;
   align-items: center;
 `;
-const LogoLink = styled.a`
+const LogoLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
